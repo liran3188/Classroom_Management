@@ -10,21 +10,29 @@ import {
   
   import { ClassesService } from './classes.service';
   
-  @Controller('products')
+  @Controller('Classes')
   export class ClassesController {
     constructor(private readonly classesService: ClassesService) {}
   
     @Post()
     addClass(
-      @Body('id') classId: number,
       @Body('name') className: string,
       @Body('capacity') classCapacity: number,
     ) {
+      const classId = Math.floor(Math.random() *1000)
       this.classesService.insertClass(
         classId,
         className,
         classCapacity,
       );
+    }
+
+    @Post('studentId')
+    addStudent(
+      @Param('studentId') studentId: number,
+      @Body('classId') classId: number
+    ) {
+      this.classesService.addStudent(classId, studentId);
     }
   
     @Get()
@@ -43,8 +51,15 @@ import {
     }
 
     @Get('id')
+    getClass(
+      @Param('id') id: number
+    ) {
+      this.classesService.getClass(id)
+    }
+
+    @Get()
     getStudents(
-        @Param('id') classId: number
+        @Body('id') classId: number
     ) {
         this.classesService.getStudents(classId);
     }
