@@ -7,7 +7,7 @@ import { Student } from './student.model';
 export class StudentsService {
   constructor(private readonly studentRepository: StudentRepository) {}
 
-  async insertStudent(id: number, firstName: string, lastName: string, age: number, occupation, string): Promise<Student> {
+  async insertStudent(id: number, firstName: string, lastName: string, age: number, occupation: string): Promise<Student> {
     const classroomData = new Student(id, firstName, lastName, age, occupation)
     return this.studentRepository.create(classroomData);
   }
@@ -17,12 +17,31 @@ export class StudentsService {
   }
 
   async deleteStudent(id: number) {
-    return this.studentRepository.delete(id);
-    //delete from connecting table
+    try{
+      this.studentRepository.deleteConnection(id);
+      return this.studentRepository.delete(id);
+    }
+    catch (e) {
+      throw new NotFoundException 
+  }
+}
+
+  async getStudent(id: number): Promise<Student> {
+    try{
+      return this.studentRepository.findById(id);
+    }
+    catch (e) {
+      throw new NotFoundException
+    }
   }
 
   //connecting table
   getClasses(id:number){
-    //get from DB
+    try{
+      return this.studentRepository.getClasses(id);
+    }
+    catch (e) {
+      throw new NotFoundException
+    }
   }
 }
