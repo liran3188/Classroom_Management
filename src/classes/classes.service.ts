@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { ClassRepository } from './classes.repository';
 import { Class } from './class.model';
 
-
 @Injectable()
 export class ClassesService {
   constructor(private readonly classRepository: ClassRepository) {}
@@ -17,16 +16,44 @@ export class ClassesService {
   }
 
   async deleteClass(id: number) {
-    return this.classRepository.delete(id);
-    //delete from connecting table
+    try{
+      this.classRepository.deleteConnection(id);
+      return this.classRepository.delete(id);
+    }
+    catch (e) {
+      throw new NotFoundException
+    }
+  }
+
+  async getClass(id: number): Promise<Class> {
+    try{
+      return this.classRepository.findById(id);
+    }
+    catch (e) {
+      throw new NotFoundException
+    }
   }
 
   //connecting table
   removeStudent(classId: number, studentId: number) {
-    //remove student from student list
+    try{
+      return this.classRepository.removeStudent(studentId, classId);
+    }
+    catch (e) {
+      throw new NotFoundException
+    }
+  }
+
+  addStudent(classId: number, studentId: number) {
+    return this.classRepository.addStudent(studentId, classId);
   }
 
   getStudents(id: number) {
-    //get students from DB
+    try{
+      return this.classRepository.getStudents(id);
+    }
+    catch (e) {
+      throw new NotFoundException
+    }
   }
 }
