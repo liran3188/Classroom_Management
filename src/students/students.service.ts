@@ -1,24 +1,27 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-
+import { StudentRepository } from './students.repository';
 import { Student } from './student.model';
 
 
 @Injectable()
 export class StudentsService {
+  constructor(private readonly studentRepository: StudentRepository) {}
 
-  insertStudent(id: number, firstName: string, lastName: string, age: number, occupation: string) {
-    const newStudent = new Student(id, firstName, lastName, age, occupation);
-    //put in DB
+  async insertStudent(id: number, firstName: string, lastName: string, age: number, occupation, string): Promise<Student> {
+    const classroomData = new Student(id, firstName, lastName, age, occupation)
+    return this.studentRepository.create(classroomData);
   }
 
-  deleteStudent(id: number) {
-    //remove from DB
-}
-
-  getStudents() {
-    //get from DB
+  async getStudents(): Promise<Student[]> {
+    return this.studentRepository.findAll();
   }
 
+  async deleteStudent(id: number) {
+    return this.studentRepository.delete(id);
+    //delete from connecting table
+  }
+
+  //connecting table
   getClasses(id:number){
     //get from DB
   }
