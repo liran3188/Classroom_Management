@@ -10,18 +10,18 @@ import {
   
   import { StudentsService } from './students.service';
   
-  @Controller('products')
+  @Controller('Students')
   export class StudentsController {
     constructor(private readonly studentsService: StudentsService) {}
   
     @Post()
     addStudent(
-      @Body('id') studentId: number,
       @Body('firstName') firstName: string,
       @Body('lastName') lastName: string,
       @Body('age') age: number,
       @Body('occupation') occupation: string,
     ) {
+      const studentId = Math.floor(Math.random() *1000)
       this.studentsService.insertStudent(
         studentId,
         firstName,
@@ -37,8 +37,15 @@ import {
     }
 
     @Get('id')
+    getClass(
+      @Param('id') id: number
+    ) {
+      this.studentsService.getStudent(id)
+    }
+
+    @Get()
     getClasses(
-        @Param('id') studentId: number
+        @Body('id') studentId: number
     ) {
         this.studentsService.getClasses(studentId);
     }
