@@ -3,11 +3,13 @@ import { Module } from '@nestjs/common';
 import { ClassesController } from './classes.controller';
 import { ClassesService } from './classes.service';
 import { ClassRepository } from './classes.repository';
-import { StudentClass } from 'src/StudentClass.model';
+import { DataBaseModule } from 'src/db.module';
+import { StudentClassModule } from 'src/StudentClass/StudentClass.module';
+import { classProviders } from './providers';
 
 @Module({
-    imports: [StudentClass],
+    imports: [StudentClassModule, DataBaseModule],
     controllers: [ClassesController],
-    providers: [ClassesService, ClassRepository],
+    providers: [ClassesService, ClassRepository, ...classProviders],
 })
 export class ClassesModule {}
