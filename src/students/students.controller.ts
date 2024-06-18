@@ -36,7 +36,7 @@ import {
       return this.studentsService.getStudents();
     }
 
-    @Get('id')
+    @Get(':id')
     getClass(
       @Param('id') id: number
     ) {
