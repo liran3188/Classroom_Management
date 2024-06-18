@@ -1,7 +1,7 @@
 import { Column, Model, Table } from 'sequelize-typescript';
 
 @Table
-export class Class extends Model<Class>{
+export class classrooms extends Model<classrooms>{
     @Column({ primaryKey: true, autoIncrement: true })
     id: number;
   
