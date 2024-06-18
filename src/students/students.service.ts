@@ -1,24 +1,26 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { StudentRepository } from './students.repository';
-import { Student } from './student.model';
+import { students } from './student.model';
+import { StudentClassService } from 'src/StudentClass/StudentClass.service';
 
 
 @Injectable()
 export class StudentsService {
-  constructor(private readonly studentRepository: StudentRepository) {}
+  constructor(private readonly studentRepository: StudentRepository,
+    private readonly studentClassService: StudentClassService) {}
 
-  async insertStudent(id: number, firstName: string, lastName: string, age: number, occupation: string): Promise<Student> {
-    const classroomData = new Student(id, firstName, lastName, age, occupation)
+  async insertStudent(id: number, firstName: string, lastName: string, age: number, occupation: string): Promise<students> {
+    const classroomData = new students(id, firstName, lastName, age, occupation)
     return this.studentRepository.create(classroomData);
   }
 
-  async getStudents(): Promise<Student[]> {
+  async getStudents(): Promise<students[]> {
     return this.studentRepository.findAll();
   }
 
   async deleteStudent(id: number) {
     try{
-      this.studentRepository.deleteConnection(id);
+      this.studentClassService.deleteStudent(id);
       return this.studentRepository.delete(id);
     }
     catch (e) {
@@ -26,7 +28,7 @@ export class StudentsService {
   }
 }
 
-  async getStudent(id: number): Promise<Student> {
+  async getStudent(id: number): Promise<students> {
     try{
       return this.studentRepository.findById(id);
     }
@@ -38,7 +40,7 @@ export class StudentsService {
   //connecting table
   getClasses(id:number){
     try{
-      return this.studentRepository.getClasses(id);
+      return this.studentClassService.getClasses(id);
     }
     catch (e) {
       throw new NotFoundException
