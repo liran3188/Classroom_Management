@@ -27,7 +27,7 @@ import {
       );
     }
 
-    @Post('studentId')
+    @Post(':studentId')
     addStudent(
       @Param('studentId') studentId: number,
       @Body('classId') classId: number
@@ -50,7 +50,7 @@ import {
       return null;
     }
 
-    @Get('id')
+    @Get(':id')
     getClass(
       @Param('id') id: number
     ) {
