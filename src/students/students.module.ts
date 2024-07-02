@@ -1,10 +1,10 @@
 import { Module, forwardRef } from '@nestjs/common';
-
-import { StudentsController } from './students.controller';
+//local
 import { StudentsService } from './students.service';
 import { StudentRepository } from './students.repository';
-import { ClassesModule } from 'src/classes/classes.module';
-import { ClassesService } from 'src/classes/classes.service';
+import { ClassesModule } from '../classes/classes.module';
+import { StudentsController } from './students.controller';
+import { ClassesService } from '../classes/classes.service';
 
 @Module({
     imports: [forwardRef(() => ClassesModule)],
