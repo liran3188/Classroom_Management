@@ -1,7 +1,8 @@
 import { Inject, Injectable, NotFoundException, forwardRef } from '@nestjs/common';
-import { StudentRepository } from './students.repository';
+//local
 import { Student } from './student.model';
-import { ClassesService } from 'src/classes/classes.service';
+import { StudentRepository } from './students.repository';
+import { ClassesService } from '../classes/classes.service';
 
 @Injectable()
 export class StudentsService {
