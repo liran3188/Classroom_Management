@@ -1,15 +1,6 @@
-import {
-    Controller,
-    Post,
-    Body,
-    Get,
-    Param,
-    Patch,
-    Delete,
-  } from '@nestjs/common';
-  
-  import { ClassesService } from './classes.service';
-  
+import { ClassesService } from './classes.service';
+import {Controller,Post,Body,Get,Param,Patch,Delete,} from '@nestjs/common';
+
   @Controller('classes')
   export class ClassesController {
     constructor(private readonly classesService: ClassesService) {}
