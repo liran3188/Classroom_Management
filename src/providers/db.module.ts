@@ -1,8 +1,10 @@
-import { Sequelize } from 'sequelize-typescript';
-import ConfigService from "./config.service"
 import { Module } from '@nestjs/common';
-import { Student } from 'src/students/student.model';
-import { Classroom } from 'src/classes/class.model';
+import { Sequelize } from 'sequelize-typescript';
+//local
+import ConfigService from './config.service';
+import { Classroom } from '../classes/class.model';
+import { Student } from '../students/student.model';
+
 
 const databaseProviders = [
     {
