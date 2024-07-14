@@ -1,7 +1,7 @@
 import '../App.css'; // Import CSS for styling
 import React, { useState, useEffect } from 'react';
 import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
 import { Modal, Box, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
@@ -64,7 +64,7 @@ const ClassStudentsModal = ({ classId, onClose }) => {
             <div key={studentItem.id} className="student-item">
               <AccountCircleSharpIcon className="person-icon" />
               <h3 className="student-name">{studentItem.firstName} {studentItem.lastName}</h3>
-              <DeleteIcon className='student-delete-button' onClick={() => deleteStudent(studentItem.id)} sx={{ color: themeColor, paddingBottom: '5%' }} />
+              <DeleteSharpIcon className='trash' onClick={() => deleteStudent(studentItem.id)} sx={{ color: themeColor, paddingBottom: '5%' }} />
             </div>
           ))}
         </div>
