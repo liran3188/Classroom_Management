@@ -358,6 +358,7 @@ form {
 }
 
 .class-assign-button {
+  cursor: pointer;
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 40px;
