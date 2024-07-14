@@ -203,6 +203,7 @@ h4 {
 }
 
 .list {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,6 +213,7 @@ h4 {
 }
 
 .trash {
+  cursor: pointer;
   margin-top: 8px;
 }
 
