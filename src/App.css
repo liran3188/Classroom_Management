@@ -289,6 +289,11 @@ form {
   justify-content: center;
 }
 
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
 
 
 .modal {
