@@ -84,7 +84,7 @@ const Create = () => {
 
   return (
     <Container className='mainContainer'>
-      <Grid container spacing={75} justifyContent="center">
+      <Grid container spacing={50}>
         <Grid item xs={12} md={6}>
             <Typography className="topText" variant="h3" component="h3" gutterBottom>
               Create new class
