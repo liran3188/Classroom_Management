@@ -1,0 +1,471 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+h4 {
+  font-size: large;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+.main-content {
+  margin-left: 0; /* Adjust this based on your side navigation width */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/*Navbar*/
+
+.navbar {
+  overflow: hidden;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-menu li {
+  padding: 0 10px;
+}
+
+.navbar-menu li a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu-toggle {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-item{
+  margin-right: 7px;
+}
+
+.navText {
+  font-size:xx-large;
+  color: white;
+  font-weight: 400;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 22px;
+}
+
+
+
+/*SideNav*/
+
+.sidenav {
+  height: 100%;
+  width: 0px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 30px;
+}
+
+.sidenav.open {
+  width: 150px; /* Adjust width as needed */
+}
+
+.sidenav a {
+  font-size: small;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Start with transparent background */
+  opacity: 0;
+  pointer-events: none; /* Do not capture clicks */
+  transition: opacity 0.3s ease;
+}
+
+.overlay.open {
+  opacity: 0.5; /* Adjust opacity level as desired */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+}
+
+.linkText {
+  margin: 10px;
+  font-weight: normal;
+  text-align: center;
+}
+
+
+
+/*Classes*/
+
+.classes-container {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr)); /* Ensures 6 cards fit and scales with the screen */
+  gap: 16px; /* Adjust the gap between the cards as needed */
+  padding: 16px; /* Optional: Add some padding around the grid */
+}
+
+.class-card {
+  background: white;
+  padding: 5px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  aspect-ratio: 1 / 1; /* Maintain a 1:1 aspect ratio for square cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure space between content and buttons */
+  max-width: 100%; /* Ensure the card doesn't exceed the grid cell */
+}
+
+.topDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+}
+
+.bottomDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 1200px) {
+  .classes-container {
+      grid-template-columns: repeat(6, minmax(0, 1fr)); /* 5 cards per row for medium screens */
+  }
+}
+
+.seatsLeft {
+  font-size: medium;
+  font-weight: 500;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.maxSeats {
+  font-size: small;
+  color: grey;
+  font-weight: 400;
+  margin-top: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+.list {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: 600;
+  margin: 10px;
+}
+
+.trash {
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+
+
+/* StudentsTable */
+
+.table-container {
+  max-width: 80%; /* Ensure the table container doesn't exceed the screen width */
+  overflow-x: auto; /* Add horizontal scrolling if needed */
+}
+
+.table {
+  max-width: 100%; /* Minimum width for the table */
+}
+
+.table-cell {
+  padding: 0px; /* Add padding for table cells */
+  font-size: 0.875rem; /* Adjust font size */
+}
+
+.table-header-cell {
+  font-weight: bold; /* Bold font for header cells */
+}
+
+.table-button {
+  font-size: 0.75rem; /* Smaller button text */
+  padding: 4px 8px; /* Smaller button padding */
+}
+
+
+
+/*Students*/
+
+.table-container {
+  max-width: 80%; /* Ensure the table container doesn't exceed the screen width */
+  overflow-x: auto; /* Add horizontal scrolling if needed */
+}
+
+.tableDiv {
+  display: flex;
+  justify-content: center;
+  min-width: 100%;
+  margin-top: 5%;
+}
+
+
+
+/*Create*/
+
+.MuiContainer-root {
+  padding: 0% !important; 
+  margin: 0% !important;
+}
+
+input {
+  margin: 20px;
+}
+
+.MuiGrid-container {
+  margin-top: 0% !important;
+  margin-left: 0% !important;
+}
+.MuiGrid-item {
+  padding: 0% !important;
+  padding-right: 20% !important;
+  justify-content: center !important;
+}
+
+.textField {
+  width: 60% !important;
+  margin-left: 5% !important;
+}
+
+.submitButton {
+  width: 70% !important;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mainContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+/*ConfirmModal*/
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black overlay */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.modal-text {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+}
+
+.modal-button:hover {
+  opacity: 0.9;
+}
+
+
+
+/*AssignModal*/
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black overlay */
+}
+
+.modal-classes {
+  display: flex;
+  flex-direction: column;
+}
+
+.class-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -30px;
+}
+
+.class-assign-button {
+  cursor: pointer;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 40px;
+}
+
+.class-name {
+  margin-top: 12px;
+  font-weight: 500;
+}
+
+.class-icon {
+  margin-top: 12px;
+  color: white;
+  background-color: lightgray;
+  border-radius: 50%;
+  padding: 3px;
+}
+
+
+
+/*ClassStudentsModal*/
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black overlay */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.trash {
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.modal-classes {
+  display: flex;
+  flex-direction: column;
+}
+
+.person-icon {
+  margin-top: 0px;
+  color: lightgray;
+
+}
+
+.student-name {
+  font-weight: 500;
+  margin-top: -2px;
+
+}
+
+.student-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
