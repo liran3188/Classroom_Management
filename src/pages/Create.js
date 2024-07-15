@@ -137,20 +137,20 @@ const Create = () => {
         </Grid>
       </Grid>
 
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-        action={
-          <Button color="inherit" onClick={handleCloseSnackbar}>
-            Close
-          </Button>
-        }
-      >
-        <Alert onClose={handleCloseSnackbar} severity={feedback.includes('Error') ? 'error' : 'success'}>
-          {feedback}
-        </Alert>
-      </Snackbar>
+      // <Snackbar
+      //   open={open}
+      //   autoHideDuration={6000}
+      //   onClose={handleCloseSnackbar}
+      //   action={
+      //     <Button color="inherit" onClick={handleCloseSnackbar}>
+      //       Close
+      //     </Button>
+      //   }
+      // >
+      //   <Alert onClose={handleCloseSnackbar} severity={feedback.includes('Error') ? 'error' : 'success'}>
+      //     {feedback}
+      //   </Alert>
+      // </Snackbar>
     </Container>
   );
 };
