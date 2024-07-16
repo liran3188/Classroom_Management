@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException, forwardRef } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable, NotFoundException, forwardRef } from '@nestjs/common';
 import { StudentRepository } from './students.repository';
 import { Student } from './student.model';
 import { ClassesService } from 'src/classes/classes.service';
@@ -12,8 +12,8 @@ export class StudentsService {
     private readonly studentRepository: StudentRepository,
   ) {}
 
-  async insertStudent(CreateStudentDto: CreateStudentDto): Promise<Student> {
-      return await this.studentRepository.create(CreateStudentDto);
+  async insertStudent(CreateStudentDto: CreateStudentDto) {    
+       await this.studentRepository.create(CreateStudentDto);
   }
 
   async getStudents(): Promise<Student[]> {

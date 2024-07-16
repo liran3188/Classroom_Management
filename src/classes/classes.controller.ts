@@ -6,6 +6,8 @@ import {
     Param,
     Patch,
     Delete,
+    HttpException,
+    HttpStatus,
   } from '@nestjs/common';
   
   import { ClassesService } from './classes.service';
@@ -16,35 +18,75 @@ import {
     constructor(private readonly classesService: ClassesService) {}
   
     @Post()
-    addClass(
+    async addClass(
       @Body() CreateClassroomDto: CreateClassroomDto
     ) {
-      this.classesService.insertClass(
-        CreateClassroomDto
-      );
+      try {
+        await this.classesService.insertClass(
+          CreateClassroomDto
+        );
+      }
+      catch (e) {
+        throw new HttpException({
+          status: HttpStatus.BAD_REQUEST,
+          error: e.message,
+        }, HttpStatus.BAD_REQUEST);
+      }
     }
   
     @Get()
-    getAllClasses() {
-      return this.classesService.getClasses();
+    async getAllClasses() {
+      try {
+        return await this.classesService.getClasses();
+      }
+      catch (e) {
+        throw new HttpException({
+          status: HttpStatus.BAD_REQUEST,
+          error: e.message,
+        }, HttpStatus.BAD_REQUEST);
+      }
     }
 
     @Get(':id')
-    getClass(
+    async getClass(
       @Param('id') id: number
     ) {
-      return this.classesService.getClass(id)
+      try {
+        return await this.classesService.getClass(id)
+      }
+      catch (e) {
+        throw new HttpException({
+          status: HttpStatus.BAD_REQUEST,
+          error: e.message,
+        }, HttpStatus.BAD_REQUEST);
+      }
     }
 
     @Get('students/:id')
-    getStudents(
+    async getStudents(
         @Param('id') classId: number
     ) {
-      return this.classesService.getStudents(classId);
+      try {
+        return await this.classesService.getStudents(classId);
+      }
+      catch (e) {
+        throw new HttpException({
+          status: HttpStatus.BAD_REQUEST,
+          error: e.message,
+        }, HttpStatus.BAD_REQUEST);
+      }
     }
   
     @Delete()
-    removeClass(@Body('id') classId: number) {
-      return this.classesService.deleteClass(classId);
+    async removeClass(@Body('id') classId: number) {
+      try {
+        return await this.classesService.deleteClass(classId);
+      }
+      catch (e) {
+        throw new HttpException({
+          status: HttpStatus.BAD_REQUEST,
+          error: e.message,
+        }, HttpStatus.BAD_REQUEST);
+      }
     }
   }

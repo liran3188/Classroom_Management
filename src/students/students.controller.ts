@@ -34,9 +34,9 @@ import {
     }
   
     @Get()
-    getAllStudents() {
+    async getAllStudents() {
       try {
-        return this.studentsService.getStudents();
+        return await this.studentsService.getStudents();
 
       }
       catch (e) {
@@ -48,11 +48,11 @@ import {
     }
 
     @Get(':id')
-    getClass(
+    async getClass(
       @Param('id') id: number
     ) {
       try {
-        return this.studentsService.getStudent(id)
+        return await this.studentsService.getStudent(id)
 
       }
       catch (e) {
@@ -64,11 +64,11 @@ import {
     }
 
     @Patch()
-    removeStudent(
+    async removeStudent(
       @Body('id') id: number,
     ) {
       try {
-        return this.studentsService.removeFromClass(id);
+        return await this.studentsService.removeFromClass(id);
 
       }
       catch (e) {
@@ -81,9 +81,9 @@ import {
 
   
     @Delete()
-    deleteStudent(@Body('id') studentId: number) {
+    async deleteStudent(@Body('id') studentId: number) {
       try {
-        return this.studentsService.deleteStudent(studentId);
+        return await this.studentsService.deleteStudent(studentId);
 
       }
       catch (e) {
@@ -100,7 +100,7 @@ import {
       @Body('classId') classId: number
     ) {
       try {
-        this.studentsService.addToClass(classId, studentId);
+        await this.studentsService.addToClass(classId, studentId);
       } catch (e) {
         throw new HttpException({
           status: HttpStatus.BAD_REQUEST,

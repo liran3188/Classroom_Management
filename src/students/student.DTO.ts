@@ -15,7 +15,7 @@ export class CreateStudentDto {
 
   @IsInt()
   @IsNotEmpty()
-  age: number;
+  age: number | null = null;
 
   @IsString()
   @IsNotEmpty()

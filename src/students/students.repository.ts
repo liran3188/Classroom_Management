@@ -14,12 +14,8 @@ export class StudentRepository {
     return await Student.findByPk(id);
   }
 
-  async create(createStudentDto: CreateStudentDto): Promise<Student> {
-    try {
-      return await Student.create(createStudentDto);
-    } catch (error) {
-      throw new Error('Error creating student');
-    }
+  async create(createStudentDto: CreateStudentDto) {
+    await Student.create(createStudentDto);
   }
 
   async removeFromClass(id: number): Promise<[affectedCount: number]> {
